@@ -87,3 +87,52 @@ export const Empty = styled.div`
   font-weight: 600;
   color: #999999
 `;
+
+export const MatchContainer = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0, 0.8);
+`;
+
+export const MatchImage = styled.img`
+  
+`;
+
+export const AvatarMatch = styled.img`
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 5px solid #ffffff;
+  margin: 30px 0;
+`;
+
+export const NameMatch = styled.span`
+  font-size: 32px;
+  font-weight: bold;
+  color: #ffffff;
+`;
+
+export const BioMatch = styled.p`
+  margin-top: 10px;
+  font-size: 20px;
+  line-height: 30px;
+  max-width: 400px;
+  color: rgba(255,255,255,0.8);
+`;
+
+export const MatchButton = styled.button`
+  border: 0;
+  background: none;
+  font-weight: bold;
+  font-size: 18px;
+  color: rgba(255,255,255,0.8);
+  margin-top: 30px;
+  cursor: pointer;
+`;

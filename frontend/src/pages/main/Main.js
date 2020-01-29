@@ -10,7 +10,7 @@ import * as S from "./styles";
 
 export default function Main({ match }) {
   const [users, setUsers] = useState([]);
-  const [matchDev, setMatchDec] = useState(true);
+  const [matchDev, setMatchDev] = useState(false);
 
   useEffect(() => {
     async function loadUsers() {
@@ -29,7 +29,7 @@ export default function Main({ match }) {
       query: { user: match.params.id }
     });
     socket.on("match", dev => {
-      console.log(dev)
+      setMatchDev(dev)
     })
     
   }, [match.params.id]);
@@ -80,7 +80,13 @@ export default function Main({ match }) {
         )}
 
         {matchDev && (
-          <div>24:50</div>
+          <S.MatchContainer>
+            <S.MatchImage src={itsamatch} alt="It's a match!" />
+            <S.AvatarMatch src={matchDev.avatar} alt={matchDev.name} />
+            <S.NameMatch>{matchDev.name}</S.NameMatch>
+            <S.BioMatch>{matchDev.bio}</S.BioMatch>
+            <S.MatchButton type="button" onClick={() => setMatchDev(false)}>FECHAR</S.MatchButton>
+          </S.MatchContainer>
         )}
     </S.Container>
   )
