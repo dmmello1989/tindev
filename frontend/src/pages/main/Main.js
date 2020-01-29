@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
+import io from "socket.io-client";
 import { Link } from "react-router-dom";
 import api from "../../services/api";
-import logo from "../../assets/logo.png";
-import like from "../../assets/like.png";
-import dislike from "../../assets/dislike.png";
+import logo from "../../assets/tindev-logo.svg";
+import like from "../../assets/like.svg";
+import dislike from "../../assets/dislike.svg";
+import itsamatch from "../../assets/itsamatch.png";
 import * as S from "./styles";
 
 export default function Main({ match }) {
   const [users, setUsers] = useState([]);
+  const [matchDev, setMatchDec] = useState(true);
 
   useEffect(() => {
     async function loadUsers() {
@@ -19,6 +22,16 @@ export default function Main({ match }) {
     }
 
     loadUsers();
+  }, [match.params.id]);
+
+  useEffect(() => {
+    const socket = io("http://localhost:3333", {
+      query: { user: match.params.id }
+    });
+    socket.on("match", dev => {
+      console.log(dev)
+    })
+    
   }, [match.params.id]);
 
   async function handleLike(id) {
@@ -64,6 +77,10 @@ export default function Main({ match }) {
           </S.List>
         ) : (
           <S.Empty>Acabou :(</S.Empty>
+        )}
+
+        {matchDev && (
+          <div>24:50</div>
         )}
     </S.Container>
   )
