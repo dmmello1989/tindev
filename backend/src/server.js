@@ -1,20 +1,5 @@
 const express = require("express");
 const mongoose = require("mongoose");
-<<<<<<< HEAD
-const cors = require("cors");
-const routes = require("./routes");
-const server = express();
-
-mongoose.connect("mongodb+srv://omnistack:omnistack@cluster0-mhmge.mongodb.net/tindev?retryWrites=true&w=majority", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
-
-server.use(cors());
-server.use(express.json());
-server.use(routes);
-server.listen(3333);
-=======
 const routes = require("./routes");
 const cors = require("cors");
 
@@ -31,7 +16,8 @@ io.on("connection", socket => {
 });
 
 mongoose.connect("mongodb+srv://omnitindev:omnitindev@cluster0-mhmge.mongodb.net/tindev?retryWrites=true&w=majority", {
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 });
 
 app.use((req, res, next) => {
@@ -48,4 +34,3 @@ app.use(routes);
 
 server.listen(3333);
 
->>>>>>> a388ce966877eb0e28602a35284aa4323771aa3a
